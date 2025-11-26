@@ -1,0 +1,30 @@
+Consultas
+
+1)Listar todas as vendas com nomes dos clientes e nome dos funcionários
+
+2)Listar os itens de venda mostrando o nome do produto
+
+3)Mostrar todas as compras com nome do fornecedor 
+
+4)Listar produtos com categorias e fabricantes
+
+5)Ver todos os fornecedores que fornecem cada produto
+
+6)Ver compras com itens e valores
+
+7)Ver vendas completas, cliente, funcionário, itens e produtos
+
+8)Listar produtos controlados
+
+9)Funcionário, cargo e vendas realizadas por ele
+
+10)Venda completa 
+
+11)Compras completas com fornecedores, produtos, categorias e fabricantes
+
+12)Mostrar produtos com preço maior que 50
+
+13)Mostrar clientes cujo nome começa com "M"
+
+14)Mostrar as vendas feitas em um mès especifico
+
