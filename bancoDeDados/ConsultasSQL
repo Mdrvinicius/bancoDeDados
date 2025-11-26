@@ -1,0 +1,155 @@
+
+1)Listar todas as vendas com nomes dos clientes e nome dos funcionários
+
+SELECT
+    v.id AS id_venda,
+    v.data_venda,
+    c.nome AS cliente,
+    f.nome AS funcionario,
+    v.valor_total
+FROM vendas v
+JOIN clientes c ON v.cliente_id = c.id
+JOIN funcionarios f ON v.funcionario_id = f.id;
+
+2)Listar os itens de venda mostrando o nome do produto
+
+SELECT
+    iv.id,
+    iv.venda_id,
+    p.nome AS produto,
+    iv.quantidade,
+    iv.preco_unitario
+FROM itens_venda iv
+JOIN produtos p ON iv.produto_id = p.id;
+
+3)Mostrar todas as compras com nome do fornecedor
+
+SELECT
+    co.id,
+    co.data_compra,
+    f.nome AS fornecedor,
+    co.valor_total
+FROM compras co
+JOIN fornecedores f ON co.fornecedor_id = f.id;
+
+4)Listar produtos com categorias e fabricantes
+
+SELECT
+    p.id,
+    p.nome,
+    c.nome AS categoria,
+    f.nome AS fabricante
+FROM produtos p
+JOIN categorias c ON p.categoria_id = c.id
+JOIN fabricantes f ON p.fabricante_id = f.id;
+
+5)Ver todos os fornecedores que fornecem cada produto
+
+SELECT
+    p.nome AS produto,
+    f.nome AS fornecedor,
+    pf.preco_fornecido
+FROM produtos_fornecedores pf
+JOIN produtos p ON pf.produto_id = p.id
+JOIN fornecedores f ON pf.fornecedor_id = f.id;
+
+6)Ver compras com itens e valores
+
+SELECT
+    c.id AS compra,
+    f.nome AS fornecedor,
+    p.nome AS produto,
+    ic.quantidade,
+    ic.preco_unitario
+FROM compras c
+JOIN fornecedores f ON c.fornecedor_id = f.id
+JOIN itens_compra ic ON ic.compra_id = c.id
+JOIN produtos p ON ic.produto_id = p.id;
+
+7)Ver vendas completas, cliente, funcionário, itens e produtos
+
+SELECT
+    v.id AS venda,
+    c.nome AS cliente,
+    f.nome AS funcionario,
+    p.nome AS produto,
+    iv.quantidade,
+    iv.preco_unitario
+FROM vendas v
+JOIN clientes c ON v.cliente_id = c.id
+JOIN funcionarios f ON v.funcionario_id = f.id
+JOIN itens_venda iv ON iv.venda_id = v.id
+JOIN produtos p ON iv.produto_id = p.id;
+
+8)Listar produtos controlados
+
+SELECT
+    p.nome AS produto,
+    pc.registro_ms,
+    pc.receita_obrigatoria
+FROM produtos_controlados pc
+JOIN produtos p ON pc.produto_id = p.id;
+
+9)Funcionário, cargo e vendas realizadas por ele
+
+SELECT
+    f.nome AS funcionario,
+    c.nome AS cargo,
+    v.id AS venda,
+    v.data_venda
+FROM funcionarios f
+JOIN cargos c ON f.cargo_id = c.id
+JOIN vendas v ON v.funcionario_id = f.id;
+
+10)Venda completa
+
+SELECT
+    v.id AS venda,
+    v.data_venda,
+    cli.nome AS cliente,
+    fun.nome AS funcionario,
+    car.nome AS cargo,
+    p.nome AS produto,
+    iv.quantidade,
+    iv.preco_unitario
+FROM vendas v
+JOIN clientes cli ON v.cliente_id = cli.id
+JOIN funcionarios fun ON v.funcionario_id = fun.id
+JOIN cargos car ON fun.cargo_id = car.id
+JOIN itens_venda iv ON iv.venda_id = v.id
+JOIN produtos p ON iv.produto_id = p.id;
+
+
+11)Compras completas com fornecedores, produtos, categorias e fabricantes
+
+SELECT
+    c.id AS compra,
+    f.nome AS fornecedor,
+    p.nome AS produto,
+    cat.nome AS categoria,
+    fab.nome AS fabricante,
+    ic.quantidade,
+    ic.preco_unitario
+FROM compras c
+JOIN fornecedores f ON c.fornecedor_id = f.id
+JOIN itens_compra ic ON ic.compra_id = c.id
+JOIN produtos p ON ic.produto_id = p.id
+JOIN categorias cat ON p.categoria_id = cat.id
+JOIN fabricantes fab ON p.fabricante_id = fab.id;
+
+12)Mostrar produtos com preço maior que 50
+
+SELECT * FROM produtos
+WHERE preco > 50;
+
+13)Mostrar clientes cujo nome começa com "M"
+
+SELECT * FROM clientes
+WHERE nome LIKE 'M%';
+
+14)Mostrar as vendas feitas em um mès especifico
+
+SELECT *
+FROM vendas
+WHERE MONTH(data_venda) = 5;
+
